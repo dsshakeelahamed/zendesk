@@ -2,6 +2,9 @@ from datetime import datetime
 
 
 class Ticket:
+    """
+    Ticket class consisting of all data for a particular ticket
+    """
     def __init__(self, ticket_data):
         self.status = ticket_data.get("status", "")
         self.subject = ticket_data.get("subject", "")
@@ -17,6 +20,9 @@ class Ticket:
             self.created = ticket_data.get("created_at", "")
 
     def display(self):
+        """
+        Static method to display ticket details on console
+        """
         print("Ticket_id : %s" % self.ticket_id)
         print("Created on : %s" % self.created)
         print("Subject : %s" % self.subject)
