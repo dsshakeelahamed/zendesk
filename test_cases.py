@@ -33,7 +33,7 @@ class TestTicketService(unittest.TestCase):
 
     # Test when single ticket provides valid id
     def test_process_single_ticket(self):
-        with open("test_all_pages.txt", 'r') as file:
+        with open("test_files/test_all_pages.txt", 'r') as file:
             sys.stdin = file
             self.assertFalse(self.assertRaises(Exception, self.process_obj._process_request("1")))
 
@@ -53,13 +53,13 @@ class TestTicketService(unittest.TestCase):
 
     # Test if all pages are printed
     def test_process_all_tickets(self):
-        with open("test_all_pages.txt", 'r') as file:
+        with open("test_files/test_all_pages.txt", 'r') as file:
             sys.stdin = file
             self.assertFalse(self.assertRaises(Exception, self.process_obj._process_request("2")))
 
     # Test if Display doesn't raise an Exception
     def test_display_content(self):
-        with open("test_help_display.txt", 'r') as file:
+        with open("test_files/test_help_display.txt", 'r') as file:
             sys.stdin = file
             self.assertFalse(self.assertRaises(Exception, self.process_obj._process_input()))
             self.assertFalse(self.assertRaises(Exception, self.process_obj._process_input()))
