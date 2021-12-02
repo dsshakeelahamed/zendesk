@@ -16,7 +16,7 @@ class InvalidSubDomainException(Exception):
 
 class UnauthorizedException(Exception):
     def __init__(self):
-        print("Invalid Credentials, Please provide valid Credentials")
+        print("Invalid Credentials, please provide valid Credentials")
 
 
 class ForbiddenException(Exception):
@@ -26,5 +26,5 @@ class ForbiddenException(Exception):
 
 class ServerErrorException(Exception):
     def __init__(self):
-        print("The server could not process the request, Please try after sometime")
+        print("The server could not process the request, please try after sometime")
 
