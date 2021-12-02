@@ -1,7 +1,7 @@
 
-api_token = "MFBtUUVmM3dTb0dRRm14R0Raa2J4dHhheGgwd0xDNG9XdDhaR1JYTA=="
-subdomain = "zccsdavanag"
+api_token = ""
+subdomain = ""
 api_prefix = "api/v2"
-username = "sdavanag@iu.edu"
+username = ""
 records_per_page = 25
 
