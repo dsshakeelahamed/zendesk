@@ -10,7 +10,7 @@ class Service:
         pass
 
     def __request_data(self, path):
-        # add generic exceptions to these
+
         url = "https://%s.zendesk.com/%s/%s" % (cfg.subdomain, cfg.api_prefix, path)
         response = requests.get(url=url, auth=HTTPBasicAuth(username='%s/token' % cfg.username, password=base64.b64decode(cfg.api_token)))
         if response.status_code == 200:
