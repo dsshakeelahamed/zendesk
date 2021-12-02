@@ -15,3 +15,8 @@ The Application is divided into 2 main sections:
 * `config.py` consists of all the constants/properties.
 
 The application can be tested by running ` coverage run -m unittest test_cases.py` and report can be viewed by running `coverage report -m` 
+
+To configure authorization, update the config with below details
+1) `api_token` - Should be a valid api token 
+2) `subdomain` - the domain name
+3) `username` - username

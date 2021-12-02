@@ -1,8 +1,17 @@
 import sys
 import unittest
+import requests
+from requests.auth import HTTPBasicAuth
 
+import config as cfg
 from process import Process
 from exception import *
+
+# Inserting tickets for testing, not in setUp else multiple copies would be created
+url = "https://%s.zendesk.com/%s/%s" % (cfg.subdomain, cfg.api_prefix, "imports/tickets/create_many.json")
+with open("test_files/ticket.json", 'r') as file:
+    data = file.read()
+requests.post(url, data, auth=HTTPBasicAuth(username='%s/token' % cfg.username, password=cfg.api_token), headers={"Content-Type": "application/json"})
 
 
 class TestTicketService(unittest.TestCase):
@@ -15,13 +24,13 @@ class TestTicketService(unittest.TestCase):
 
     # Test when a single valid ticket id is provided
     def test_single_ticket_success(self):
-        ticket_id = 3
+        ticket_id = 1
         ticket = self.process_obj._process_single_ticket(str(ticket_id))[0]
         self.assertEqual(ticket.ticket_id, ticket_id)
 
-    # Test when ticket id with no data is provided
+    # Test when ticket id with no data is provided (assuming less than 1000 tickets present)
     def test_single_ticket_failure(self):
-        self.assertRaises(NoDataException, self.process_obj._process_single_ticket, "999")
+        self.assertRaises(NoDataException, self.process_obj._process_single_ticket, "1001")
 
     # Test when an invalid id is provided
     def test_single_ticket_invalid_id(self):
@@ -63,5 +72,4 @@ class TestTicketService(unittest.TestCase):
             sys.stdin = file
             self.assertFalse(self.assertRaises(Exception, self.process_obj._process_input()))
             self.assertFalse(self.assertRaises(Exception, self.process_obj._process_input()))
-
 
